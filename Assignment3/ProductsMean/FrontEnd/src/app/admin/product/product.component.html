@@ -1,0 +1,34 @@
+<br><br>
+<h1 class="text-center">Product List</h1>
+<div class="row">
+    <div class="col-md-9 offset-md-3" style="margin-top: 20px;padding: 20px;">
+        <button class="btn btn-info btn-sm" style="margin-left: 370px;" routerLink="/add">Add Product</button> &nbsp;
+
+<br><br>
+        <div class="table table-responsive">
+            <thead style="background-color: rgb(226, 157, 180);padding: 50px;">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of products; let i=index" style="background-color: aliceblue;padding: 50px;">
+                    <td>{{i + 1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.des}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm mx-auto" routerLink="/edit/{{item._id}}">Edit</button> &nbsp;
+                        <button class="btn btn-danger btn-sm mx-auto" (click)="deleteData(item._id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </div>
+
+    </div>
+
+</div>

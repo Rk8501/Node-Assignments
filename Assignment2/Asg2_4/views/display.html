@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Student List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+  <body class="bg-info">
+    <br>
+    <h3 class="text-center">Student Details </h3>
+    <div class="row">
+      <div class="col-md-8 offset-md-2" style="background-color: #fff; margin-top:25px; padding:20px;">
+          <table class="table table-striped" style="border: 3px;">
+            <thead>
+              <tr class="text-center">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody id="studentdata"></tbody>
+          </table>
+          <a class="btn btn-warning offset-md-11" href="/logout">Logout</a>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script>
+            $(document).ready(async function () {
+              try {
+                var res = await fetch("/studentdata", {
+                  method: "GET",
+                  headers: { "Content-Type": "application/json" },
+                });
+                var data = await res.json();
+                var value = "";
+                data.data.forEach((element) => {
+                  value += ` <tr>
+                          <td align="center">${element.firstname}</td>
+                          <td align="center">${element.lastname}</td>
+                          <td align="center">${element.email}</td>
+                          <td align="center">${element.password}</td>
+                          <td align="center"><a href="/edit/${element._id}">Edit</a></td>
+                          <td align="center"><a href="/delete/${element._id}">Delete</a></td>
+                          </tr>`;
+                });
+                $("#studentdata").append(value);
+              } catch (err) {
+                console.log(err);
+              }
+            });
+          </script>
+      
+      </div>
+    </div>
+   
+  </body>
+</html>

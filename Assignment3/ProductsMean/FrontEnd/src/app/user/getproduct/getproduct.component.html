@@ -1,0 +1,36 @@
+<style>
+    p {
+        border-bottom: 1px solid rgb(184, 184, 207);
+        text-align: center;
+        padding-bottom: 10px;
+    }
+</style>
+
+<br><br>
+
+<div class="container">
+  
+        <div class="row">
+            <div class="col-md-3" *ngFor="let item of data">
+                <div class="card" style="margin-top: 20px;">
+              
+                        <img
+                        src="../../assets/img.png"
+                        class="
+                          img-fluid
+                          ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}
+                        "
+                        alt=""
+                      />
+                        <p></p>
+                        <p>{{ item.name }}</p>
+                        <p>{{ item.price }}</p>
+                        <p>{{ item.des }}</p>
+
+                </div>                                               
+            </div>            
+        </div>
+</div>
+
+
+
